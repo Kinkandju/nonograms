@@ -410,6 +410,10 @@ template {
 
 html,
 body {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 18px;
+  font-family: "Marcellus";
   background: rgb(238, 174, 202);
   background: radial-gradient(circle, rgb(238, 174, 202) 0%, rgb(148, 187, 233) 100%);
   color: rgb(44, 43, 42);
@@ -450,6 +454,105 @@ ul {
       -ms-flex-align: center;
           align-items: center;
   margin: 0;
-  padding: 0 20px;
-  height: 100vh;
+  padding: 20px;
+  height: calc(100vh - 40px);
+}
+
+.game__title {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 30px;
+  font-family: "Alata";
+  text-align: center;
+  margin: 0 0 40px 0;
+  padding: 0;
+}
+
+.game__field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.game__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.game__clues {
+  border: 2px solid rgb(44, 43, 42);
+}
+
+.game__clues.clues_top {
+  position: relative;
+  top: 2px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+  grid-template-columns: repeat(5, 1fr);
+  margin-left: auto;
+  width: 300px;
+  height: 60px;
+}
+
+.game__clues.clues_top .game__clue {
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+}
+
+.game__clues.clues_left {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[5];
+  grid-template-rows: repeat(5, 1fr);
+  width: 60px;
+  height: 300px;
+}
+
+.game__clue,
+.game__cell {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid rgb(44, 43, 42);
+}
+
+.game__sectoring {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+  grid-template-columns: repeat(5, 1fr);
+  -ms-grid-rows: (1fr)[5];
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0;
+  width: 300px;
+  height: 300px;
+  border-right: 2px solid rgb(44, 43, 42);
+  border-bottom: 2px solid rgb(44, 43, 42);
+}
+
+.game__cell:hover {
+  background-color: rgb(148, 187, 233);
 }
