@@ -411,7 +411,7 @@ template {
 html,
 body {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 18px;
   font-family: "Marcellus";
   background: rgb(238, 174, 202);
@@ -464,8 +464,6 @@ ul {
   line-height: 30px;
   font-family: "Alata";
   text-align: center;
-  margin: 0 0 40px 0;
-  padding: 0;
 }
 
 .game__field {
@@ -479,9 +477,19 @@ ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.game__title,
+.game__container {
+  margin: 0 0 40px 0;
+  padding: 0;
 }
 
 .game__container {
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -495,12 +503,14 @@ ul {
 }
 
 .game__clues {
+  background-color: rgb(238, 174, 202);
   border: 2px solid rgb(44, 43, 42);
 }
 
 .game__clues.clues_top {
   position: relative;
-  top: 2px;
+  top: 1px;
+  z-index: 1;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[5];
@@ -508,12 +518,22 @@ ul {
   margin-left: auto;
   width: 300px;
   height: 60px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .game__clues.clues_top .game__clue {
   -webkit-writing-mode: vertical-rl;
       -ms-writing-mode: tb-rl;
           writing-mode: vertical-rl;
+}
+
+.game__clues.clues_top .game__clue:first-child {
+  border-top-left-radius: 10px;
+}
+
+.game__clues.clues_top .game__clue:last-child {
+  border-top-right-radius: 10px;
 }
 
 .game__clues.clues_left {
@@ -523,6 +543,16 @@ ul {
   grid-template-rows: repeat(5, 1fr);
   width: 60px;
   height: 300px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.game__clues.clues_left .game__clue:first-child {
+  border-top-left-radius: 10px;
+}
+
+.game__clues.clues_left .game__clue:last-child {
+  border-bottom-left-radius: 10px;
 }
 
 .game__clue,
@@ -551,8 +581,116 @@ ul {
   height: 300px;
   border-right: 2px solid rgb(44, 43, 42);
   border-bottom: 2px solid rgb(44, 43, 42);
+  border-bottom-right-radius: 10px;
+}
+
+.game__cell {
+  background-color: rgb(255, 255, 255);
+}
+
+.game__cell:last-child {
+  border-bottom-right-radius: 10px;
 }
 
 .game__cell:hover {
+  -webkit-box-shadow: 0 0 25px 2px rgb(148, 187, 233) inset;
+          box-shadow: 0 0 25px 2px rgb(148, 187, 233) inset;
+}
+
+.game__cell.filled {
   background-color: rgb(148, 187, 233);
+}
+
+.game__cell.crossed {
+  position: relative;
+}
+
+.game__cell.crossed::before,
+.game__cell.crossed::after {
+  position: absolute;
+  top: 47%;
+  left: -2%;
+  width: 60px;
+  height: 2px;
+  content: "";
+  background-color: rgb(238, 174, 202);
+  border: 1px solid rgb(198, 156, 174);
+  border-radius: 5px;
+}
+
+.game__cell.crossed::before {
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.game__cell.crossed::after {
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.game__button {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  font-family: "Alata";
+  text-transform: uppercase;
+  margin: 0;
+  padding: 16px 20px;
+  border: 2px solid rgb(198, 156, 174);
+  border-radius: 10px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+  transition: background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+.game__button::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: rgb(238, 174, 202);
+  border-radius: inherit;
+  -webkit-box-shadow: 0 0 0 2px rgb(198, 156, 174), 0 0.625em 0 0 rgb(212, 170, 170);
+          box-shadow: 0 0 0 2px rgb(198, 156, 174), 0 0.625em 0 0 rgb(212, 170, 170);
+  -webkit-transform: translate3d(0, 12px, -16px);
+          transform: translate3d(0, 12px, -16px);
+  -webkit-transition: -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+  transition: -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+.game__button:hover {
+  background: rgb(248, 183, 209);
+  -webkit-transform: translate(0, 4px);
+      -ms-transform: translate(0, 4px);
+          transform: translate(0, 4px);
+}
+
+.game__button:hover::before {
+  -webkit-box-shadow: 0 0 0 2px rgb(198, 156, 174), 0 8px 0 0 rgb(212, 170, 170);
+          box-shadow: 0 0 0 2px rgb(198, 156, 174), 0 8px 0 0 rgb(212, 170, 170);
+  -webkit-transform: translate3d(0, 8px, -16px);
+          transform: translate3d(0, 8px, -16px);
+}
+
+.game__button:active {
+  background: rgb(248, 183, 209);
+  -webkit-transform: translate(0, 12px);
+      -ms-transform: translate(0, 12px);
+          transform: translate(0, 12px);
+}
+
+.game__button:active::before {
+  -webkit-box-shadow: 0 0 0 2px rgb(198, 156, 174), 0 0 rgb(212, 170, 170);
+          box-shadow: 0 0 0 2px rgb(198, 156, 174), 0 0 rgb(212, 170, 170);
+  -webkit-transform: translate3d(0, 0, -16px);
+          transform: translate3d(0, 0, -16px);
 }
