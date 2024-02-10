@@ -156,26 +156,42 @@ function checkSolution() {
 import { toggleClass, removeClass } from './assets/modules/changing_classes.js';
 
 const cells = document.querySelectorAll('.game__cell');
+const soundFilled = document.querySelector('.sound_filled');
+const soundCrossed = document.querySelector('.sound_crossed');
+const soundEmpty = document.querySelector('.sound_empty');
 const buttonReset = document.querySelector('.game__button');
 
 cells.forEach(cell => {
   cell.addEventListener('click', () => {
     if (cell.classList.contains('crossed')) {
-        removeClass(cell, 'crossed');
+      removeClass(cell, 'crossed');
     }
 
     toggleClass(cell, 'filled');
+
+    if (cell.classList.contains('filled')) {
+      soundFilled.play();
+    } else {
+      soundEmpty.play();
+    }
+
     checkSolution();
   });
   
   cell.addEventListener('contextmenu', event => {
     if (cell.classList.contains('filled')) {
-        removeClass(cell, 'filled');
+      removeClass(cell, 'filled');
     }
 
     event.preventDefault();
 
     toggleClass(cell, 'crossed');
+
+    if (cell.classList.contains('crossed')) {
+      soundCrossed.play();
+    } else {
+      soundEmpty.play();
+    }
   });
 
   buttonReset.addEventListener('click', () => {
