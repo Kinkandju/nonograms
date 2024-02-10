@@ -25,6 +25,7 @@ import { scss } from "./gulp/tasks/scss.js";
 import { js } from "./gulp/tasks/js.js";
 import { modules } from "./gulp/tasks/modules.js";
 import { images } from "./gulp/tasks/images.js";
+import { sounds } from "./gulp/tasks/sounds.js";
 import { favicon } from "./gulp/tasks/favicon.js";
 import { otfToTtf, ttfToWoff, fontStyle } from "./gulp/tasks/fonts.js";
 import { sprite } from "./gulp/tasks/svgSprite.js";
@@ -38,6 +39,7 @@ function watcher() {
   gulp.watch(path.watch.scss, scss);
   gulp.watch(path.watch.js, js);
   gulp.watch(path.watch.images, images);
+  gulp.watch(path.watch.sounds, sounds);
   gulp.watch(path.watch.favicon, favicon);
 }
 
@@ -47,7 +49,7 @@ const fonts = gulp.series(otfToTtf, ttfToWoff, fontStyle);
 // const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, js, images));
 const mainTasks = gulp.series(
   fonts,
-  gulp.parallel(copy, html, scss, js, modules, images, favicon, sprite),
+  gulp.parallel(copy, html, scss, js, modules, images, sounds, favicon, sprite),
 ); // Add function create sprite
 
 // Building task execution scenarios

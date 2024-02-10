@@ -13,6 +13,7 @@ export const path = {
     fonts: `${buildFolder}/fonts/`,
     favicon: `${buildFolder}/favicon/`,
     images: `${buildFolder}/img/`,
+    sounds: `${buildFolder}/sounds/`,
     files: `${buildFolder}/files/`,
   },
   src: {
@@ -24,6 +25,7 @@ export const path = {
     svgicons: `${srcFolder}/svgicons/*.svg`,
     svg: `${srcFolder}/img/**/*.svg`,
     images: `${srcFolder}/img/**/*.{jpg,jpeg,png,gif,webp}`,
+    sounds: `${srcFolder}/sounds/**/*.mp3`,
     files: `${srcFolder}/files/**/*.*`,
   },
   watch: {
@@ -33,6 +35,7 @@ export const path = {
     modules: `${srcFolder}/js/modules/*.js`,
     favicon: `${srcFolder}/favicon/**/*.{png,ico}`,
     images: `${srcFolder}/img/**/*.{jpg,jpeg,png,svg,gif,webp}`,
+    sounds: `${srcFolder}/sounds/**/*.mp3`,
     files: `${srcFolder}/files/**/*.*`,
   },
   clean: [buildFolder, "./index.html", "./script.js", "./styles.css"],
