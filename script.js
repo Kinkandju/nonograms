@@ -4,6 +4,31 @@ import { createElement } from './assets/modules/state_of_the_elements.js';
 import { addElement } from './assets/modules/state_of_the_elements.js';
 import { addClass } from './assets/modules/changing_classes.js';
 
+import { toggleClass, removeClass } from './assets/modules/changing_classes.js';
+
+const modal = document.querySelector('.modal');
+
+function endGame() {
+  toggleClass(modal, 'show');
+}
+
+function resetField() {
+  cells.forEach(cell => {
+    removeClass(cell, 'filled');
+    removeClass(cell, 'crossed');
+  });
+}
+
+const buttonModal = document.querySelector('.modal__button');
+
+function returnToGame() {
+  buttonModal.addEventListener('click', () => {
+    removeClass(modal, 'show');
+    resetField();
+  });
+}
+
+const modalSound = document.querySelector('.modal__sound');
 const cluesInRows = document.querySelectorAll('.clues_left > .game__clue');
 const cluesInCols = document.querySelectorAll('.clues_top > .game__clue');
 
@@ -150,10 +175,11 @@ function checkSolution() {
   }
   
   // if user have reached this point, then the solution is correct
-  console.log('Great! You have solved the nonogram!');
+  // alert('Great! You have solved the nonogram!');
+  modalSound.play();
+  endGame();
+  returnToGame();
 }
-
-import { toggleClass, removeClass } from './assets/modules/changing_classes.js';
 
 const cells = document.querySelectorAll('.game__cell');
 const soundFilled = document.querySelector('.sound_filled');
@@ -161,42 +187,32 @@ const soundCrossed = document.querySelector('.sound_crossed');
 const soundEmpty = document.querySelector('.sound_empty');
 const buttonReset = document.querySelector('.game__button');
 
-cells.forEach(cell => {
-  cell.addEventListener('click', () => {
-    if (cell.classList.contains('crossed')) {
-      removeClass(cell, 'crossed');
+function addCellListener(element, event, classContains, classToggle, soundPlay) {
+  element.addEventListener(event, evt => {
+    if (element.classList.contains(classContains)) {
+      removeClass(element, classContains);
     }
 
-    toggleClass(cell, 'filled');
+    evt.preventDefault();
 
-    if (cell.classList.contains('filled')) {
-      soundFilled.play();
+    toggleClass(element, classToggle);
+
+    if (element.classList.contains(classToggle)) {
+      soundPlay.play();
     } else {
       soundEmpty.play();
     }
 
     checkSolution();
   });
-  
-  cell.addEventListener('contextmenu', event => {
-    if (cell.classList.contains('filled')) {
-      removeClass(cell, 'filled');
-    }
+}
 
-    event.preventDefault();
+cells.forEach(cell => {
+  addCellListener(cell, 'click', 'crossed', 'filled', soundFilled);
+  addCellListener(cell, 'contextmenu', 'filled', 'crossed', soundCrossed);
+});
 
-    toggleClass(cell, 'crossed');
-
-    if (cell.classList.contains('crossed')) {
-      soundCrossed.play();
-    } else {
-      soundEmpty.play();
-    }
-  });
-
-  buttonReset.addEventListener('click', () => {
-    removeClass(cell, 'filled');
-    removeClass(cell, 'crossed');
-  });
+buttonReset.addEventListener('click', () => {
+  resetField();
 });
   
