@@ -6,13 +6,30 @@ import { addClass } from './assets/modules/changing_classes.js';
 
 import { toggleClass, removeClass } from './assets/modules/changing_classes.js';
 
+const text = document.querySelector('.modal__text');
+let startTime;
+let timerInterval;
+
+function startTimer() {
+  startTime = Date.now();
+
+  timerInterval = setInterval(() => {
+    const currentTime = Math.floor((Date.now() - startTime) / 1000);
+
+    text.innerText = `Great! You have solved the nonogram in ${currentTime} seconds!`;
+  }, 1000);
+}
+
 const modal = document.querySelector('.modal');
 
 function endGame() {
   toggleClass(modal, 'show');
+  clearInterval(timerInterval);
 }
 
 function resetField() {
+  startTime = null;
+
   cells.forEach(cell => {
     removeClass(cell, 'filled');
     removeClass(cell, 'crossed');
@@ -189,6 +206,10 @@ const buttonReset = document.querySelector('.game__button');
 
 function addCellListener(element, event, classContains, classToggle, soundPlay) {
   element.addEventListener(event, evt => {
+    if (!startTime) {
+      startTimer();
+    }
+
     if (element.classList.contains(classContains)) {
       removeClass(element, classContains);
     }
