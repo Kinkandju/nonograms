@@ -27,6 +27,43 @@
   </head>
 
   <body class="page">
+    <header class="page__header header">
+  <div class="header__container">
+    <img class="header__logo" src="/assets/img/nonograms.jpg" width="50" height="50" alt="Logo"></img>
+
+    <div class="header__menu menu">
+      <div class="menu__icon">
+        <span></span>
+      </div>
+
+      <nav class="menu__navigation">
+        <ul class="menu__list">
+          <li class="menu__item">
+            <span class="menu__category">easy 5x5</span>
+            <ul class="menu__sub-list">
+                <li class="menu__sub-item">skull</li>
+                <li class="menu__sub-item">tower</li>
+                <li class="menu__sub-item">hourglass</li>
+                <li class="menu__sub-item">snowflake</li>
+                <li class="menu__sub-item">smile</li>
+            </ul>
+          </li>
+          <li class="menu__item">
+            <span class="menu__category">medium 10x10</span>
+          </li>
+          <li class="menu__item">
+            <span class="menu__category">difficult 15x15</span>
+          </li>
+          <li class="menu__item">
+            <a class="menu__link link" href="https://nonograms-katana.fandom.com/wiki/Tips_for_solving">
+              Tips for solving
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
     <main class="page__main main">
   <section class="main__game game">
     <h1 class="game__title">Awesome nonograms</h1>
@@ -88,17 +125,21 @@
         </div>
       </div>
 
-      <button class="game__button button">Reset game</button>
+      <div class="game__buttons">
+        <button class="game__button button button_reset">Reset game</button>
+        <button class="game__button button button_random">Random game</button>
+      </div>
     </div>
 
     <div class="game__modal modal">
       <audio class="modal__sound" src="assets/sounds/applause.mp3"></audio>
 
-      <p class="modal__text">Great! You have solved the nonogram!</p>
+      <p class="modal__text"></p>
       <button class="modal__button button">Return to game</button>
     </div>
   </section>
 </main>
+    
     <script src="script.js" type="module"></script>
   </body>
 </html>
