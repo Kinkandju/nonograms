@@ -45,25 +45,48 @@ function returnToGame() {
   });
 }
 
-const modalSound = document.querySelector('.modal__sound');
 const cluesInRows = document.querySelectorAll('.clues_left > .game__clue');
+
+/* get an array of left clues */
+const rowClues = Array.from(
+  cluesInRows,
+  clue => clue.textContent.split(' ')
+);
+
 const cluesInCols = document.querySelectorAll('.clues_top > .game__clue');
+
+/* get an array of top clues */
+const colClues = Array.from(
+  cluesInCols,
+  clue => clue.textContent.split(' ')
+);
+
+function updateClues(newLeftClues, newTopClues) {
+  cluesInRows.forEach((clue, index) => {
+    clue.textContent = newLeftClues[index];
+  });
+
+  cluesInCols.forEach((clue, index) => {
+    clue.textContent = newTopClues[index];
+  });
+}
+
+const newLeftClues = ["1 1 1", "5", "3", "1 1", "3"];
+const newTopClues = ["2", "4", "3 1", "4", "2"];
+
+updateClues(newLeftClues, newTopClues);
+
+// const button1 = document.querySelector('.game__1');
+
+// button1.addEventListener('click', () => {
+//   updateClues(newLeftClues, newTopClues);
+// })
+
+
+const modalSound = document.querySelector('.modal__sound');
 
 /* a function that checks the solution of the game is correct or not */
 function checkSolution() {
-
-  /* get an array of left clues */
-  const rowClues = Array.from(
-    cluesInRows,
-    clue => clue.textContent.split(' ')
-  );
-
-  /* get an array of top clues */
-  const colClues = Array.from(
-    cluesInCols,
-    clue => clue.textContent.split(' ')
-  );
-
   /* the number of rows in the game field */
   const numRows = rowClues.length;
   /* the number of columns in the game field */
