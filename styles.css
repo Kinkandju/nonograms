@@ -443,19 +443,108 @@ ul {
   cursor: pointer;
 }
 
+.link {
+  text-decoration: none;
+  color: rgb(44, 43, 42);
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
 .page {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  margin: 0 0 30px 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+  background-color: rgb(238, 174, 202);
+}
+
+.header__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 auto;
+  padding: 10px 20px;
+  max-width: 1440px;
+}
+
+.header__logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.menu__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.menu__item {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.menu__category {
   margin: 0;
-  padding: 20px;
-  height: calc(100vh - 40px);
+  padding: 15px;
+  cursor: pointer;
+}
+
+.menu__category:hover {
+  text-decoration: underline;
+}
+
+.menu__sub-list {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  margin: 0;
+  padding: 15px;
+  background-color: rgb(148, 187, 233);
+}
+
+.menu__sub-item {
+  margin: 0;
+  padding: 0 0 15px 0;
+}
+
+.menu__sub-item:last-child {
+  margin: 0;
+  padding: 0;
+}
+
+.menu__link {
+  margin: 0;
+  padding: 15px;
 }
 
 .game__title {
@@ -698,6 +787,10 @@ ul {
           box-shadow: 0 0 0 2px rgb(198, 156, 174), 0 0 rgb(212, 170, 170);
   -webkit-transform: translate3d(0, 0, -16px);
           transform: translate3d(0, 0, -16px);
+}
+
+.game__button {
+  margin-bottom: 40px;
 }
 
 .game__modal {
