@@ -1,25 +1,35 @@
 'use strict';
 
-import { createElement } from './assets/modules/state_of_the_elements.js';
-import { addElement } from './assets/modules/state_of_the_elements.js';
-import { addClass } from './assets/modules/changing_classes.js';
+import { createElement, addElement } from './assets/modules/state_of_the_elements.js';
 
-import { toggleClass, removeClass } from './assets/modules/changing_classes.js';
+import { addClass, toggleClass, removeClass } from './assets/modules/changing_classes.js';
+import { isMobile } from './assets/modules/is_mobile.js';
 
-const text = document.querySelector('.modal__text');
+//* Adding a class to the page depending on the operating system
+const page = document.querySelector('.page');
+
+if (isMobile.any()) {
+  addClass(page, 'page__mobile');
+} else {
+  addClass(page, 'page__pc');
+}
+
+//* Adding a timer to count down the time of the game
 let startTime;
 let timerInterval;
 
-function startTimer() {
+const startTimer = () => {
   startTime = Date.now();
 
   timerInterval = setInterval(() => {
     const currentTime = Math.floor((Date.now() - startTime) / 1000);
 
-    text.innerText = `Great! You have solved the nonogram in ${currentTime} seconds!`;
+    const textModal = document.querySelector('.modal__text');
+    textModal.innerText = `Great! You have solved the nonogram in ${currentTime} seconds!`;
   }, 1000);
 }
 
+//* Adding the function of ending the game
 const modal = document.querySelector('.modal');
 
 function endGame() {
@@ -27,6 +37,7 @@ function endGame() {
   clearInterval(timerInterval);
 }
 
+//* Adding the function of clearing the playing field
 function resetField() {
   startTime = null;
 
@@ -36,6 +47,7 @@ function resetField() {
   });
 }
 
+//* Adding the function of returning in the game
 const buttonModal = document.querySelector('.modal__button');
 
 function returnToGame() {
@@ -61,20 +73,20 @@ const colClues = Array.from(
   clue => clue.textContent.split(' ')
 );
 
-function updateClues(newLeftClues, newTopClues) {
-  cluesInRows.forEach((clue, index) => {
-    clue.textContent = newLeftClues[index];
-  });
+// function updateClues(newLeftClues, newTopClues) {
+//   cluesInRows.forEach((clue, index) => {
+//     clue.textContent = newLeftClues[index];
+//   });
 
-  cluesInCols.forEach((clue, index) => {
-    clue.textContent = newTopClues[index];
-  });
-}
+//   cluesInCols.forEach((clue, index) => {
+//     clue.textContent = newTopClues[index];
+//   });
+// }
 
-const newLeftClues = ["1 1 1", "5", "3", "1 1", "3"];
-const newTopClues = ["2", "4", "3 1", "4", "2"];
+// const newLeftClues = ["1 1 1", "5", "3", "1 1", "3"];
+// const newTopClues = ["2", "4", "3 1", "4", "2"];
 
-updateClues(newLeftClues, newTopClues);
+// updateClues(newLeftClues, newTopClues);
 
 // const button1 = document.querySelector('.game__1');
 
@@ -85,7 +97,7 @@ updateClues(newLeftClues, newTopClues);
 
 const modalSound = document.querySelector('.modal__sound');
 
-/* a function that checks the solution of the game is correct or not */
+//* Adding the function that checks a solution of the game is correct or not
 function checkSolution() {
   /* the number of rows in the game field */
   const numRows = rowClues.length;
