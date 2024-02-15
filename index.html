@@ -29,7 +29,12 @@
   <body class="page">
     <header class="page__header header">
   <div class="header__container">
-    <img class="header__logo" src="/assets/img/nonograms.jpg" width="50" height="50" alt="Logo"></img>
+    <img class="header__logo"
+         src="/assets/img/nonograms.jpg"
+         width="50"
+         height="50"
+         alt="Logo"
+    ></img>
 
     <div class="header__menu menu">
       <div class="menu__icon">
@@ -39,7 +44,7 @@
       <nav class="menu__navigation">
         <ul class="menu__list">
           <li class="menu__item">
-            <span class="menu__category">easy 5x5</span>
+            <span class="menu__category">Easy 5x5</span>
             <ul class="menu__sub-list">
                 <li class="menu__sub-item">skull</li>
                 <li class="menu__sub-item">tower</li>
@@ -49,14 +54,29 @@
             </ul>
           </li>
           <li class="menu__item">
-            <span class="menu__category">medium 10x10</span>
+            <span class="menu__category">Medium 10x10</span>
+            <ul class="menu__sub-list">
+              <li class="menu__sub-item">clock</li>
+              <li class="menu__sub-item">coffee</li>
+              <li class="menu__sub-item">mouse</li>
+              <li class="menu__sub-item">valentine</li>
+              <li class="menu__sub-item">cherries</li>
+          </ul>
           </li>
           <li class="menu__item">
-            <span class="menu__category">difficult 15x15</span>
+            <span class="menu__category">Difficult 15x15</span>
+            <ul class="menu__sub-list">
+              <li class="menu__sub-item">deer</li>
+              <li class="menu__sub-item">lamp</li>
+              <li class="menu__sub-item">sun</li>
+              <li class="menu__sub-item">flowers</li>
+              <li class="menu__sub-item">music</li>
+          </ul>
           </li>
           <li class="menu__item">
-            <a class="menu__link link" href="https://nonograms-katana.fandom.com/wiki/Tips_for_solving">
-              Tips for solving
+            <a class="menu__link link"
+               href="https://nonograms-katana.fandom.com/wiki/Tips_for_solving">
+               Tips for solving
             </a>
           </li>
         </ul>
@@ -87,9 +107,15 @@
         </div>
 
         <div class="game__sounds">
-          <audio class="game__sound sound sound_crossed" src="assets/sounds/crossed-click.mp3"></audio>
-          <audio class="game__sound sound sound_empty" src="assets/sounds/empty-click.mp3"></audio>
-          <audio class="game__sound sound sound_filled" src="assets/sounds/filled-click.mp3"></audio>
+          <audio class="game__sound sound sound_crossed"
+                 src="assets/sounds/crossed-click.mp3">
+          </audio>
+          <audio class="game__sound sound sound_empty"
+                 src="assets/sounds/empty-click.mp3">
+          </audio>
+          <audio class="game__sound sound sound_filled"
+                 src="assets/sounds/filled-click.mp3">
+          </audio>
         </div>
     
         <div class="game__sectoring">
@@ -132,7 +158,9 @@
     </div>
 
     <div class="game__modal modal">
-      <audio class="modal__sound" src="assets/sounds/applause.mp3"></audio>
+      <audio class="modal__sound"
+             src="assets/sounds/applause.mp3">
+      </audio>
 
       <p class="modal__text"></p>
       <button class="modal__button button">Return to game</button>
