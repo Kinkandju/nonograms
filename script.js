@@ -7,9 +7,20 @@ import { isMobile } from './assets/modules/is_mobile.js';
 
 //* Adding a class to the page depending on the operating system
 const page = document.querySelector('.page');
+const menuCategories = document.querySelectorAll('.menu__category');
 
 if (isMobile.any()) {
   addClass(page, 'page__mobile');
+
+  if (menuCategories.length > 0) {
+    for (let i = 0; i < menuCategories.length; i += 1) {
+      const menuCategory = menuCategories[i];
+
+      menuCategory.addEventListener('click', () => {
+        toggleClass(menuCategory.parentElement, 'active');
+      });
+    }
+  }
 } else {
   addClass(page, 'page__pc');
 }
