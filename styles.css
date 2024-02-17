@@ -515,23 +515,48 @@ ul {
 }
 
 .menu__list > .menu__item {
-  padding: 25px 0;
+  margin: 0;
+  padding: 10px 0;
 }
 
 .menu__item {
   position: relative;
   top: 0;
   left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .menu__category {
   margin: 0;
   padding: 15px;
   cursor: pointer;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .menu__category:hover {
   text-decoration: underline;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu__arrow {
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid rgb(44, 43, 42);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
 
 .menu__sub-list {
@@ -569,6 +594,36 @@ ul {
   opacity: 1;
   visibility: visible;
   pointer-events: all;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.page__pc .menu__navigation .menu__list > .menu__item:nth-child(1):hover .menu__arrow,
+.page__pc .menu__navigation .menu__list > .menu__item:nth-child(2):hover .menu__arrow,
+.page__pc .menu__navigation .menu__list > .menu__item:nth-child(3):hover .menu__arrow {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.page__mobile .menu__navigation .menu__list > .menu__item:nth-child(1).active .menu__sub-list,
+.page__mobile .menu__navigation .menu__list > .menu__item:nth-child(2).active .menu__sub-list,
+.page__mobile .menu__navigation .menu__list > .menu__item:nth-child(3).active .menu__sub-list {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.page__mobile .menu__navigation .menu__list > .menu__item:nth-child(1).active .menu__arrow,
+.page__mobile .menu__navigation .menu__list > .menu__item:nth-child(2).active .menu__arrow,
+.page__mobile .menu__navigation .menu__list > .menu__item:nth-child(3).active .menu__arrow {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
