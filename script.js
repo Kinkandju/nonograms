@@ -16,8 +16,8 @@ if (isMobile.any()) {
     for (let i = 0; i < menuCategories.length; i += 1) {
       const menuCategory = menuCategories[i];
 
-      menuCategory.addEventListener('click', () => {
-        toggleClass(menuCategory.parentElement, 'active');
+      menuCategory.addEventListener('click', event => {
+        toggleClass(event.target.parentElement, 'active');
       });
     }
   }
@@ -65,6 +65,18 @@ function returnToGame() {
   buttonModal.addEventListener('click', () => {
     removeClass(modal, 'show');
     resetField();
+  });
+}
+
+const iconMenu = document.querySelector('.menu__icon');
+
+if (iconMenu) {
+  const navigationMenu = document.querySelector('.menu__navigation');
+
+  iconMenu.addEventListener('click', () => {
+    toggleClass(document.body, 'page__lock');
+    toggleClass(iconMenu, 'active');
+    toggleClass(navigationMenu, 'active');
   });
 }
 
